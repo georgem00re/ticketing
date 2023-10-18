@@ -1,7 +1,7 @@
 
 export default function NavigationBar() {
 	return (
-		<nav>
+		<nav class="navbar is-dark">
 
 		</nav>
 	)

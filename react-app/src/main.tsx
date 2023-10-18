@@ -1,8 +1,9 @@
 import ReactDOM from "react-dom/client";
+import NavigationBar from "./components/NavigationBar.tsx";
 
 export default function App() {
 	return (
-		<div>Ticketing System</div>
+		<NavigationBar/>
 	)
 }
 
