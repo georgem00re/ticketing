@@ -1,7 +1,7 @@
 
 import { ImTicket } from "react-icons/im"
 
-export default function NavigationBar() {
+export default function NavigationBar({ onCreateClicked }) {
 	return (
 		<nav class="navbar is-background-white">
 			<div class="navbar-brand">
@@ -12,7 +12,7 @@ export default function NavigationBar() {
 			<div class="navbar-menu">
 				<div class="navbar-end">
 					<div class="navbar-item">
-						<button class="button is-link is-small">Create</button>
+						<button class="button is-link is-small" onClick={() => onCreateClicked()}>Create</button>
 					</div>
 				</div>
 				
