@@ -1,9 +1,14 @@
 import ReactDOM from "react-dom/client";
 import NavigationBar from "./components/NavigationBar.tsx";
+import CreateTicketModal from "./components/CreateTicketModal";
+import { Fragment } from "react";
 
 export default function App() {
 	return (
-		<NavigationBar/>
+		<Fragment>
+			<NavigationBar/>
+			<CreateTicketModal active={true}/>
+		</Fragment>
 	)
 }
 
