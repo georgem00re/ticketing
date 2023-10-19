@@ -19,7 +19,8 @@ export default function App() {
 				{columns.map((str, index) => {
 					return (
 						<Column title={str}>
-							<TicketThumbnail summary={"some-ticket"}/>
+							<TicketThumbnail identifier={1} summary={"some-ticket"}/>
+							<TicketThumbnail identifier={1} summary={"some-ticket"}/>
 						</Column>
 					)
 				})}
