@@ -1,7 +1,10 @@
 
+$box-radius: 0px;
+
 @import "../node_modules/bulma/bulma.sass";
 
 body {
-	background: #E9E9E9;
 	min-height: 100vh;
+	padding: 0px;
+	background-color: #E9E9E9;
 }
