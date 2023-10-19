@@ -3,7 +3,7 @@ import { ImTicket } from "react-icons/im"
 
 export default function NavigationBar({ onCreateClicked }) {
 	return (
-		<nav class="navbar is-background-white">
+		<nav class="navbar is-background-white p-0 box">
 			<div class="navbar-brand">
 				<div class="navbar-item">
 					<ImTicket fontSize="25px"/>
