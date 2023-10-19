@@ -8,9 +8,8 @@ interface ColumnProps {
 
 export default function Column({ title, children }: ColumnProps) {
 	return (
-		<div class="column has-background-white m-2 box">
-			<h1 class="title is-6 mb-2">{title}</h1>
-			<Divider color="#212121"/>
+		<div class="column has-background-light-grey m-2">
+			<h1 class="title is-7 mb-2">{title}</h1>
 			{children}
 		</div>
 	)
