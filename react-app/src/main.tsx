@@ -4,23 +4,26 @@ import NavigationBar from "./components/NavigationBar.tsx";
 import CreateTicketModal from "./components/CreateTicketModal";
 import TicketThumbnail from "./components/TicketThumbnail";
 import { Fragment, useState } from "react";
-
-const columns = ["BLOCKED", "TODO", "IN PROGRESS", "DONE"]
+import { TicketStatus } from "./types/ticket";
+import { useSelector, Provider } from "react-redux";
+import store from "./state/store";
 
 export default function App() {
 
 	const [ticketModalActive, setTicketModalActive] = useState(false)
+	const tickets = useSelector((state) => state.tickets)
 
 	return (
 		<Fragment>
 			<NavigationBar onCreateClicked={() => setTicketModalActive(true)}/>
 			<CreateTicketModal active={ticketModalActive} onClose={() => setTicketModalActive(false)}/>
 			<div class="columns m-5">
-				{columns.map((str, index) => {
+				{Object.values(TicketStatus).map((str, index) => {
 					return (
 						<Column title={str}>
-							<TicketThumbnail identifier={1} summary={"some-ticket"}/>
-							<TicketThumbnail identifier={1} summary={"some-ticket"}/>
+							{tickets.filter((tick) => tick.status == str).map((el, _) => {
+								return <TicketThumbnail identifier={1} summary={el.summary}/> 
+							})}
 						</Column>
 					)
 				})}
@@ -30,5 +33,7 @@ export default function App() {
 }
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-	<App/>
+	<Provider store={store}>
+		<App/>
+	</Provider>
 )
