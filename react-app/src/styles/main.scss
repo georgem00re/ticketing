@@ -1,14 +1,29 @@
 
 $box-radius: 0px;
+$family-serif: "Inter";
+$family-primary: $family-serif;
 
 @import "../node_modules/bulma/bulma.sass";
+@import url('https://fonts.googleapis.com/css?family=Inter');
 
 body {
 	min-height: 100vh;
 	padding: 0px;
-	background-color: #EBECEF;
+	background-color: #1E1E1E;
+}
+
+.is-transparent {
+	background-color: transparent;
 }
 
 .has-background-light-grey {
 	background-color: #EBECEF;
+}
+
+.has-bottom-border-grey {
+	border-bottom: 1px solid #292929;
+}
+
+.has-background-blue-grey {
+	background-color: #474a54;
 }
