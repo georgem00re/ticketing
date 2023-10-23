@@ -6,6 +6,10 @@ $family-primary: $family-serif;
 @import "../node_modules/bulma/bulma.sass";
 @import url('https://fonts.googleapis.com/css?family=Inter');
 
+html {
+	overflow: hidden;
+}
+
 body {
 	min-height: 100vh;
 	padding: 0px;
