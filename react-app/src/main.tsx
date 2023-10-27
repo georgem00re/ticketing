@@ -14,8 +14,9 @@ export default function App() {
 	const [ticketModalActive, setTicketModalActive] = useState(false)
 	const [ticketDetailActive, setTicketDetailActive] = useState(false)
 	const ticketsObject = useSelector((state) => state.tickets)
-	const ticketsArray = Object.entries(ticketsObject)[0]
+	const ticketsArray = Object.values(ticketsObject)
 	const selectedTicket = useSelector((state) => state.selectedTicket);
+	console.log(ticketsArray)
 
 	return (
 		<Fragment>
@@ -26,7 +27,7 @@ export default function App() {
 				{Object.values(TicketStatus).map((str, _) => {
 					return (
 						<Column title={str}>
-							{ticketsArray.filter((tick) => tick.status == str).map((el, index) => {
+							{ticketsArray?.filter((tick) => tick.status == str).map((el, index) => {
 								return <TicketThumbnail identifier={index + 1} ticket={el}/> 
 							})}
 						</Column>

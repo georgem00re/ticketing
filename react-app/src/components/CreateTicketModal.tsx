@@ -17,7 +17,7 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 	const dispatch = useDispatch()
 
 	const createTicket = () => {
-		const ticket: Ticket = { summary, description, status: TicketStatus.TODO, id: uuidv4() };
+		const ticket: Ticket = { summary, description, status: TicketStatus.BLOCKED, id: uuidv4() };
 		dispatch(addTicket(ticket))
 	}
 
@@ -33,22 +33,22 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 				onClose()
 			}}></div>
 			<div class="modal-content">
-				<div class="box">
-					<h1 class="title is-4">Create Ticket</h1>
+				<div class="box rounded has-background-212121">
+					<h1 class="title is-4 has-text-white">Create Ticket</h1>
 					<div class="field">
-  						<label class="label">Summary</label>
+  						<label class="label has-text-white">Summary</label>
 						<div class="control">
-							<input class="input" value={summary} type="text" onChange={(e) => setSummary(e.target.value)}/>
+							<input class="input has-background-1D1D1D has-border-dark has-text-white" value={summary} type="text" onChange={(e) => setSummary(e.target.value)}/>
 						</div>
 					</div>
 					<div class="field">
-						<label class="label">Description</label>
+						<label class="label has-text-white">Description</label>
 						<div class="control">
-							<textarea class="textarea" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+							<textarea class="textarea has-background-1D1D1D has-border-dark has-text-white" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
 					 	</div>
 					</div>
 					<div>
-						<button class="button is-light" onClick={() => {
+						<button class="button is-dark" onClick={() => {
 							clearState()
 							onClose()
 						}}>Cancel</button>
