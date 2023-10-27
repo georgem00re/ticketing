@@ -8,27 +8,28 @@ import { TicketStatus } from "./types/ticket";
 import { useSelector, Provider } from "react-redux";
 import TicketDetail from "./components/TicketDetail";
 import store from "./state/store";
+import Ticket from "./types/ticket";
+import type { RootState } from './state/store'
 
 export default function App() {
 
 	const [ticketModalActive, setTicketModalActive] = useState(false)
-	const [ticketDetailActive, setTicketDetailActive] = useState(false)
-	const ticketsObject = useSelector((state) => state.tickets)
-	const ticketsArray = Object.values(ticketsObject)
-	const selectedTicket = useSelector((state) => state.selectedTicket);
+	const ticketsObject = useSelector((state: RootState) => state.tickets)
+	const ticketsArray = Object.values(ticketsObject) as Ticket[]
+	const selectedTicket = useSelector((state: RootState) => state.selectedTicket);
 	console.log(ticketsArray)
 
 	return (
 		<Fragment>
 			<NavigationBar onCreateClicked={() => setTicketModalActive(true)}/>
 			<CreateTicketModal active={ticketModalActive} onClose={() => setTicketModalActive(false)}/>
-			<TicketDetail active={selectedTicket != null} onClose={() => setTicketDetailActive(false)}/>
-			<div class="columns m-5">
+			<TicketDetail active={selectedTicket != null}/>
+			<div className="columns m-5">
 				{Object.values(TicketStatus).map((str, _) => {
 					return (
 						<Column title={str}>
-							{ticketsArray?.filter((tick) => tick.status == str).map((el, index) => {
-								return <TicketThumbnail identifier={index + 1} ticket={el}/> 
+							{ticketsArray?.filter((tick: Ticket) => tick.status == str).map((el: Ticket, index) => {
+								return <TicketThumbnail key={index} ticket={el}/> 
 							})}
 						</Column>
 					)

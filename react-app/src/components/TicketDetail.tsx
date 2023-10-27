@@ -2,20 +2,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearSelectedTicket, updateTicket } from "../state/actions";
 import { useState, useEffect } from "react";
-import { TicketStatus } from "../types/ticket"; 
+import type { RootState } from '../state/store'
+import Ticket from "../types/ticket";
 
 interface TicketDetailProps {
 	active: boolean,
-	onClose: any,
-	ticket: Ticket,
 }
 
-export default function TicketDetail({ active, onClose }: TicketDetailProps) {
+export default function TicketDetail({ active }: TicketDetailProps) {
 
 	const dispatch = useDispatch();
-	const ticketsObject = useSelector((state) => state.tickets);
-	const selectedTicket = useSelector((state) => state.selectedTicket);
-	const ticket = ticketsObject[selectedTicket];
+	const ticketsObject = useSelector((state: RootState) => state.tickets);
+	const selectedTicket = useSelector((state: RootState) => state.selectedTicket);
+	const ticket = ticketsObject[selectedTicket] as Ticket;
 	const [summary, setSummary] = useState(ticket?.summary)
 	const [description, setDescription] = useState(ticket?.description)
 
@@ -28,11 +27,11 @@ export default function TicketDetail({ active, onClose }: TicketDetailProps) {
 		dispatch(clearSelectedTicket())
 	}
 
-	const onSummaryChange = (e) => {
+	const onSummaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSummary(e.target.value)
 	}
 
-	const onDescriptionChange = (e) => {
+	const onDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setDescription(e.target.value)
 	}
 
@@ -42,27 +41,25 @@ export default function TicketDetail({ active, onClose }: TicketDetailProps) {
 	}, [active])
 
 	return (
-		<div class={active ? "modal is-active" : "modal"}>
-			<div class="modal-background" onClick={() => {
-				onClose()
-			}}></div>
-			<div class="modal-content">
-				<div class="box has-background-212121 rounded">
-					<div class="field">
-  						<label class="label has-text-white">Summary</label>
-						<div class="control">
-							<input class="input has-background-1D1D1D has-border-dark has-text-white" type="text" value={summary} onChange={(e) => onSummaryChange(e)}/>
+		<div className={active ? "modal is-active" : "modal"}>
+			<div className="modal-background"></div>
+			<div className="modal-content">
+				<div className="box has-background-212121 rounded">
+					<div className="field">
+  						<label className="label has-text-white">Summary</label>
+						<div className="control">
+							<input className="input has-background-1D1D1D has-border-dark has-text-white" type="text" value={summary} onChange={(e: React.ChangeEvent<HTMLInputElement>) => onSummaryChange(e)}/>
 						</div>
 					</div>
-					<div class="field">
-						<label class="label has-text-white">Description</label>
-						<div class="control">
-							<textarea class="textarea has-background-1D1D1D has-border-dark has-text-white" value={description} onChange={(e) => onDescriptionChange(e)}></textarea>
+					<div className="field">
+						<label className="label has-text-white">Description</label>
+						<div className="control">
+							<textarea className="textarea has-background-1D1D1D has-border-dark has-text-white" value={description} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onDescriptionChange(e)}></textarea>
 					 	</div>
 					</div>
 					<div>
-						<button class="button is-dark" onClick={() => cancel()}>Cancel</button>
-						<button class="button is-link ml-3" onClick={() => save()}>Save</button>
+						<button className="button is-dark" onClick={() => cancel()}>Cancel</button>
+						<button className="button is-link ml-3" onClick={() => save()}>Save</button>
 					</div>
 				</div>
 			</div>

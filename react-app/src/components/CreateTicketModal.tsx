@@ -4,6 +4,7 @@ import { addTicket } from "../state/actions";
 import { TicketStatus } from "../types/ticket";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import Ticket from "../types/ticket";
 
 interface CreateTicketModalProps {
 	active: boolean,
@@ -27,32 +28,32 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 	}
 
 	return (
-		<div class={active ? "modal is-active" : "modal"}>
-			<div class="modal-background" onClick={() => {
+		<div className={active ? "modal is-active" : "modal"}>
+			<div className="modal-background" onClick={() => {
 				clearState()
 				onClose()
 			}}></div>
-			<div class="modal-content">
-				<div class="box rounded has-background-212121">
-					<h1 class="title is-4 has-text-white">Create Ticket</h1>
-					<div class="field">
-  						<label class="label has-text-white">Summary</label>
-						<div class="control">
-							<input class="input has-background-1D1D1D has-border-dark has-text-white" value={summary} type="text" onChange={(e) => setSummary(e.target.value)}/>
+			<div className="modal-content">
+				<div className="box rounded has-background-212121">
+					<h1 className="title is-4 has-text-white">Create Ticket</h1>
+					<div className="field">
+  						<label className="label has-text-white">Summary</label>
+						<div className="control">
+							<input className="input has-background-1D1D1D has-border-dark has-text-white" value={summary} type="text" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSummary(e.target.value)}/>
 						</div>
 					</div>
-					<div class="field">
-						<label class="label has-text-white">Description</label>
-						<div class="control">
-							<textarea class="textarea has-background-1D1D1D has-border-dark has-text-white" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+					<div className="field">
+						<label className="label has-text-white">Description</label>
+						<div className="control">
+							<textarea className="textarea has-background-1D1D1D has-border-dark has-text-white" value={description} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)}></textarea>
 					 	</div>
 					</div>
 					<div>
-						<button class="button is-dark" onClick={() => {
+						<button className="button is-dark" onClick={() => {
 							clearState()
 							onClose()
 						}}>Cancel</button>
-						<button class="button is-link ml-3" onClick={() => {
+						<button className="button is-link ml-3" onClick={() => {
 							createTicket()
 							clearState()
 							onClose()
