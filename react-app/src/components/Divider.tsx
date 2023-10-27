@@ -5,6 +5,6 @@ interface DividerProps {
 
 export default function Divider({ color }: DividerProps) {
 	return (
-		<div style={{ height: "3px", width: "100%", backgroundColor: color}}></div>
+		<div style={{ height: "1px", width: "100%", backgroundColor: "#292929", marginBottom: "20px"}}></div>
 	)
 }

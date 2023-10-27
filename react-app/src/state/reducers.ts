@@ -8,12 +8,12 @@ interface Action {
 }
 
 const mockTicket: Ticket = {
-	summary: "Purchase Bread",
+	summary: "Pick up prescription",
 	description: "dsfds",
 	status: TicketStatus.BLOCKED,
 }
 
-export function ticketsReducer(state = [], action: Action) {
+export function ticketsReducer(state = [mockTicket, mockTicket], action: Action) {
 	if (action.type === "ADD_TICKET") {
 		return [...state, action.payload]
 	} else if (action.type === "UPDATE_TICKET") {
