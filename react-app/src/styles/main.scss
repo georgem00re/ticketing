@@ -2,6 +2,9 @@
 $box-radius: 0px;
 $family-serif: "Inter";
 $family-primary: $family-serif;
+$background-dark: #1E1E1E;
+$border-grey: #292929;
+$column-grey: #212121;
 
 @import "../node_modules/bulma/bulma.sass";
 @import url('https://fonts.googleapis.com/css?family=Inter');
@@ -13,21 +16,49 @@ html {
 body {
 	min-height: 100vh;
 	padding: 0px;
-	background-color: #1E1E1E;
+	background-color: $background-dark;
 }
 
 .is-transparent {
 	background-color: transparent;
 }
 
+.has-background-dark {
+	background-color: $background-dark;
+}
+
+.has-border-grey {
+	border: 1px solid grey;
+}
+
+.circular {
+	border-radius: 50%;
+}
+
 .has-background-light-grey {
 	background-color: #EBECEF;
+}
+
+.has-background-212121 {
+	background-color: #212121;
 }
 
 .has-bottom-border-grey {
 	border-bottom: 1px solid #292929;
 }
 
-.has-background-blue-grey {
+.has-background-474A54 {
 	background-color: #474a54;
+}
+
+.has-border-dark {
+	border: 1px solid $border-grey;
+}
+
+.inline {
+	display: inline;
+}
+
+.rounded {
+	border-radius: 0.3em;
 }
