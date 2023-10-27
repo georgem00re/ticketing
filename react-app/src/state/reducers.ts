@@ -1,25 +1,18 @@
 
 import Ticket from "../types/ticket";
-import { TicketStatus } from "../types/ticket"
-import { v4 as uuidv4 } from "uuid";
 
 interface Action {
 	payload?: object;
 	type: string;
 }
 
-const mockTicket: Ticket = {
-	summary: "Pick up prescription",
-	description: "dsfds",
-	status: TicketStatus.BLOCKED,
-	id: uuidv4(),
-}
-
 export function ticketsReducer(state = {}, action: Action) {
 	if (action.type === "ADD_TICKET") {
-		return {...state, [action.payload.id]: action.payload}
+		const ticket = action.payload as Ticket
+		return {...state, [ticket.id]: ticket}
 	} else if (action.type === "UPDATE_TICKET") {
-		return {...state, [action.payload.id]: action.payload}
+		const ticket = action.payload as Ticket
+		return {...state, [ticket.id]: ticket}
 	} else if (action.type === "DELETE_TICKET") {
 		return state;
 	} else {

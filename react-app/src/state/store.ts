@@ -7,4 +7,6 @@ const reducers = combineReducers({
 	selectedTicket: selectedTicketReducer
 })
 
-export default createStore(reducers)
+const store = createStore(reducers);
+export type RootState = ReturnType<typeof store.getState>
+export default store;
