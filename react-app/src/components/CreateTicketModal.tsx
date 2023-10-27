@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { addTicket } from "../state/actions";
 import { TicketStatus } from "../types/ticket";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 interface CreateTicketModalProps {
 	active: boolean,
@@ -16,7 +17,7 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 	const dispatch = useDispatch()
 
 	const createTicket = () => {
-		const ticket: Ticket = { summary, description, status: TicketStatus.TODO }
+		const ticket: Ticket = { summary, description, status: TicketStatus.TODO, id: uuidv4() };
 		dispatch(addTicket(ticket))
 	}
 

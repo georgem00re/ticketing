@@ -1,9 +1,10 @@
 
 import { createStore, combineReducers } from "redux";
-import { ticketsReducer } from "./reducers";
+import { ticketsReducer, selectedTicketReducer } from "./reducers";
 
 const reducers = combineReducers({
-	tickets: ticketsReducer
+	tickets: ticketsReducer,
+	selectedTicket: selectedTicketReducer
 })
 
 export default createStore(reducers)
