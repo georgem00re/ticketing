@@ -15,8 +15,8 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	const ticketsObject = useSelector((state: RootState) => state.tickets);
 	const selectedTicket = useSelector((state: RootState) => state.selectedTicket);
 	const ticket = ticketsObject[selectedTicket] as Ticket;
-	const [summary, setSummary] = useState(ticket.summary)
-	const [description, setDescription] = useState(ticket.description)
+	const [summary, setSummary] = useState(ticket?.summary)
+	const [description, setDescription] = useState(ticket?.description)
 
 	const cancel = () => {
 		dispatch(clearSelectedTicket())
@@ -36,8 +36,8 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	}
 
 	useEffect(() => {
-		setSummary(ticket.summary)
-		setDescription(ticket.description)
+		setSummary(ticket?.summary)
+		setDescription(ticket?.description)
 	}, [active])
 
 	return (
