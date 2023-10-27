@@ -21,3 +21,16 @@ export function deleteTicket(ticket: Ticket) {
 		payload: ticket
 	}
 }
+
+export function selectTicket(uuid: String) {
+	return {
+		type: "SELECT_TICKET",
+		payload: uuid,
+	}
+}
+
+export function clearSelectedTicket() {
+	return {
+		type: "CLEAR_SELECTED_TICKET"
+	}
+}
