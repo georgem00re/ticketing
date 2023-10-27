@@ -15,7 +15,7 @@ const mockTicket: Ticket = {
 	id: uuidv4(),
 }
 
-export function ticketsReducer(state = { [mockTicket.id]: mockTicket }, action: Action) {
+export function ticketsReducer(state = {}, action: Action) {
 	if (action.type === "ADD_TICKET") {
 		return {...state, [action.payload.id]: action.payload}
 	} else if (action.type === "UPDATE_TICKET") {
