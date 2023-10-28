@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearSelectedTicket, updateTicket } from "../state/actions";
 import { useState, useEffect } from "react";
 import type { RootState } from '../state/store'
-import Ticket from "../types/ticket";
+import Ticket, { TicketStatus } from "../types/ticket";
+import TicketStatusDropdown from "./TicketStatusDropdown";
 
 interface TicketDetailProps {
 	active: boolean,
@@ -17,13 +18,14 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	const ticket = ticketsObject[selectedTicket] as Ticket;
 	const [summary, setSummary] = useState(ticket?.summary)
 	const [description, setDescription] = useState(ticket?.description)
+	const [status, setStatus] = useState(ticket?.status);
 
 	const cancel = () => {
 		dispatch(clearSelectedTicket())
 	}
 
 	const save = () => {
-		dispatch(updateTicket({ summary, description, status: ticket.status, id: selectedTicket }))
+		dispatch(updateTicket({ summary, description, status, id: selectedTicket }))
 		dispatch(clearSelectedTicket())
 	}
 
@@ -38,6 +40,7 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	useEffect(() => {
 		setSummary(ticket?.summary)
 		setDescription(ticket?.description)
+		setStatus(ticket?.status)
 	}, [active])
 
 	return (
@@ -50,6 +53,12 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 						<div className="control">
 							<input className="input has-background-1D1D1D has-border-dark has-text-white" type="text" value={summary} onChange={(e: React.ChangeEvent<HTMLInputElement>) => onSummaryChange(e)}/>
 						</div>
+					</div>
+					<div className="field">
+						<label className="label has-text-white">Ticket Status</label>
+						<div className="control">
+							<TicketStatusDropdown onClick={(status: TicketStatus) => setStatus(status)} currentStatus={status}/>
+					 	</div>
 					</div>
 					<div className="field">
 						<label className="label has-text-white">Description</label>
