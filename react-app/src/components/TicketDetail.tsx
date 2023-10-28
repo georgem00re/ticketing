@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearSelectedTicket, updateTicket } from "../state/actions";
 import { useState, useEffect } from "react";
 import type { RootState } from '../state/store'
-import Ticket from "../types/ticket";
+import Ticket, { TicketStatus } from "../types/ticket";
 import TicketStatusDropdown from "./TicketStatusDropdown";
 
 interface TicketDetailProps {
@@ -57,7 +57,7 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 					<div className="field">
 						<label className="label has-text-white">Ticket Status</label>
 						<div className="control">
-							<TicketStatusDropdown onClick={(status) => setStatus(status)} currentStatus={status}/>
+							<TicketStatusDropdown onClick={(status: TicketStatus) => setStatus(status)} currentStatus={status}/>
 					 	</div>
 					</div>
 					<div className="field">

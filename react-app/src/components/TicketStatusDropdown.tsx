@@ -3,28 +3,27 @@ import { IoIosArrowDropdownCircle } from "react-icons/io"
 import { TicketStatus } from "../types/ticket";
 
 interface TicketStatusDropdownProps {
-	active: boolean,
 	onClick: any,
 	currentStatus: TicketStatus,
 }
 
-export default function TicketStatusDropdown({ active, onClick, currentStatus }: TicketStatusDropdownProps) {
+export default function TicketStatusDropdown({ onClick, currentStatus }: TicketStatusDropdownProps) {
 	const allTicketStates = Object.entries(TicketStatus);
 	return (
-		<div class="dropdown is-hoverable">
-		  <div class="dropdown-trigger">
-		    <button class="button is-dark is-small rounded" aria-haspopup="true" aria-controls="dropdown-menu3">
+		<div className="dropdown is-hoverable">
+		  <div className="dropdown-trigger">
+		    <button className="button is-dark is-small rounded" aria-haspopup="true" aria-controls="dropdown-menu3">
 		      <span>{currentStatus}</span>
-		      <span class="icon is-small">
+		      <span className="icon is-small">
 		        <IoIosArrowDropdownCircle/>
 		      </span>
 		    </button>
 		  </div>
-		  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-		    <div class="dropdown-content has-background-dark">
-		    	{allTicketStates.map(([key, value], index) => {
+		  <div className="dropdown-menu" id="dropdown-menu3" role="menu">
+		    <div className="dropdown-content has-background-dark">
+		    	{allTicketStates.map(([key, value], _) => {
 		    		return (
-		    			<a onClick={() => onClick(TicketStatus[key])} class="dropdown-item has-background-dark has-text-white">{value}</a>
+		    			<a onClick={() => onClick(TicketStatus[key as keyof typeof TicketStatus])} className="dropdown-item has-background-dark has-text-white">{value}</a>
 		    		)
 		    	})}
 		    </div>
