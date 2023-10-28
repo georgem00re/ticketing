@@ -21,10 +21,10 @@ export default function TicketStatusDropdown({ active, onClick, currentStatus }:
 		    </button>
 		  </div>
 		  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-		    <div class="dropdown-content is-dark">
+		    <div class="dropdown-content has-background-dark">
 		    	{allTicketStates.map(([key, value], index) => {
 		    		return (
-		    			<a onClick={() => onClick(TicketStatus[key])} class="dropdown-item">{value}</a>
+		    			<a onClick={() => onClick(TicketStatus[key])} class="dropdown-item has-background-dark has-text-white">{value}</a>
 		    		)
 		    	})}
 		    </div>
