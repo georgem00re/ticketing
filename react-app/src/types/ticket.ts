@@ -4,6 +4,7 @@ export default interface Ticket {
 	summary: string,
 	description: string,
 	status: TicketStatus,
+	created: Date,
 }
 
 export enum TicketStatus {

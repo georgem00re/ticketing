@@ -18,7 +18,7 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 	const dispatch = useDispatch()
 
 	const createTicket = () => {
-		const ticket: Ticket = { summary, description, status: TicketStatus.BLOCKED, id: uuidv4() };
+		const ticket: Ticket = { summary, description, status: TicketStatus.BLOCKED, id: uuidv4(), created: Date.now() };
 		dispatch(addTicket(ticket))
 	}
 
