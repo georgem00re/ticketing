@@ -59,8 +59,29 @@ body {
 	border: 1px solid $border-grey;
 }
 
+.has-border-white {
+	border: 1px solid white;
+}
+
 .inline {
 	display: inline;
+}
+
+.high-priority {
+	background-color: rgba(90, 0, 0, 0.902);
+}
+
+.medium-priority {
+	background-color: rgb(198, 128, 0);
+}
+
+.low-priority {
+	background-color: rgb(0, 81, 0);
+}
+
+.icon {
+	height: 25px;
+	width: 25px;
 }
 
 .rounded {

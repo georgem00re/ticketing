@@ -12,3 +12,9 @@ export enum TicketStatus {
 	IN_PROGRESS = "IN PROGRESS",
 	DONE = "DONE"
 }
+
+export enum TicketPriority {
+	LOW = "LOW",
+	MEDIUM = "MEDIUM",
+	HIGH = "HIGH",
+}
