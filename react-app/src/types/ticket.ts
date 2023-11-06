@@ -4,7 +4,8 @@ export default interface Ticket {
 	summary: string,
 	description: string,
 	status: TicketStatus,
-	priority: TicketPriority
+	priority: TicketPriority,
+	number: number
 }
 
 export enum TicketStatus {
