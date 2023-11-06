@@ -4,6 +4,7 @@ export default interface Ticket {
 	summary: string,
 	description: string,
 	status: TicketStatus,
+	priority: TicketPriority
 }
 
 export enum TicketStatus {
@@ -11,4 +12,10 @@ export enum TicketStatus {
 	TODO = "TODO",
 	IN_PROGRESS = "IN PROGRESS",
 	DONE = "DONE"
+}
+
+export enum TicketPriority {
+	LOW = "Low",
+	MEDIUM = "Medium",
+	HIGH = "High",
 }
