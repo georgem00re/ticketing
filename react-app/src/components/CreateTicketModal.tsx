@@ -2,10 +2,11 @@
 import { useState } from "react";
 import { addTicket } from "../state/actions";
 import { TicketPriority, TicketStatus } from "../types/ticket";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import Ticket from "../types/ticket";
 import DropdownMenu from "./DropdownMenu";
+import type { RootState } from '../state/store'
 
 interface CreateTicketModalProps {
 	active: boolean,
@@ -19,6 +20,8 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 	const priorityStates = Object.values(TicketPriority)
 	const [priority, setPriority] = useState(0)
 	const dispatch = useDispatch()
+	const tickets = useSelector((state: RootState) => state.tickets)
+	const ticketsCount = Object.keys(tickets).length
 
 	const createTicket = () => {
 		const ticket: Ticket = { 
@@ -26,7 +29,8 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 			description, 
 			status: TicketStatus.BLOCKED, 
 			id: uuidv4(), 
-			priority: priorityStates[priority] as TicketPriority
+			priority: priorityStates[priority] as TicketPriority,
+			number: ticketsCount + 1
 		};
 		dispatch(addTicket(ticket))
 	}

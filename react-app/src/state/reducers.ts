@@ -29,3 +29,9 @@ export function selectedTicketReducer(state = null, action: Action) {
 		return state;
 	}
 }
+
+export function ticketCountReducer(state = 0, action: Action) {
+	if (action.type === "ADD_TICKET") {
+		return state += 1
+	}
+}
