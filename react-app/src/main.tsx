@@ -17,7 +17,6 @@ export default function App() {
 	const ticketsObject = useSelector((state: RootState) => state.tickets)
 	const ticketsArray = Object.values(ticketsObject) as Ticket[]
 	const selectedTicket = useSelector((state: RootState) => state.selectedTicket);
-	console.log(ticketsArray)
 
 	return (
 		<Fragment>

@@ -11,7 +11,6 @@ interface TicketThumbnailProps {
 export default function TicketThumbnail({ ticket }: TicketThumbnailProps) {
 
 	const dispatch = useDispatch();
-
 	const onClick = () => {
 		dispatch(selectTicket(ticket.id))
 	}
@@ -21,7 +20,7 @@ export default function TicketThumbnail({ ticket }: TicketThumbnailProps) {
 			<h1 className="title m-0 is-7 has-text-white">#</h1>
 			<p className="content is-5 has-text-white">{ticket.summary}</p>
 			<div className="is-flex is-justify-content-flex-end">
-				<PriorityIcon priority={TicketPriority.HIGH}/>
+				<PriorityIcon priority={ticket.priority}/>
 			</div>
 		</div>
 	)
