@@ -1,7 +1,7 @@
 
 import { useDispatch } from "react-redux";
 import { selectTicket } from "../state/actions";
-import Ticket, { TicketPriority } from "../types/ticket";
+import Ticket from "../types/ticket";
 import PriorityIcon from "./PriorityIcon";
 
 interface TicketThumbnailProps {
