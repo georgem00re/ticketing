@@ -23,6 +23,7 @@ export default function TicketThumbnail({ ticket }: TicketThumbnailProps) {
 			<p className="content is-5 has-text-white mb-2">{ticket.summary}</p>
 			<div className="is-flex is-justify-content-space-between is-align-items-center">
 				<h1 className="title is-6 has-text-white inline m-0 p-0">#{ticket.number}</h1>
+				<p className="subtitle has-text-white is-6 m-0 p-0 inline">{dateString}</p>
 				<PriorityIcon priority={ticket.priority}/>
 			</div>
 		</div>
