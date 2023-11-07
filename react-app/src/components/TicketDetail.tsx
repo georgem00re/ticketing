@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearSelectedTicket, updateTicket } from "../state/actions";
 import { useState, useEffect } from "react";
 import type { RootState } from '../state/store'
-import Ticket, { TicketStatus } from "../types/ticket";
+import Ticket, { TicketPriority, TicketStatus } from "../types/ticket";
 import TicketStatusDropdown from "./TicketStatusDropdown";
+import DropdownMenu from "./DropdownMenu";
 
 interface TicketDetailProps {
 	active: boolean,
@@ -16,6 +17,9 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	const ticketsObject = useSelector((state: RootState) => state.tickets);
 	const selectedTicket = useSelector((state: RootState) => state.selectedTicket);
 	const ticket = ticketsObject[selectedTicket] as Ticket;
+	const [priority, setPriority] = useState(Object.values(TicketPriority).indexOf(ticket?.priority))
+	
+	const priorityStates = Object.values(TicketPriority)
 	const [summary, setSummary] = useState(ticket?.summary)
 	const [description, setDescription] = useState(ticket?.description)
 	const [status, setStatus] = useState(ticket?.status);
@@ -25,7 +29,7 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	}
 
 	const save = () => {
-		dispatch(updateTicket({ summary, description, status, id: selectedTicket }))
+		dispatch(updateTicket({ summary, description, status, id: selectedTicket, priority: priorityStates[priority] as TicketPriority, number: ticket.number }))
 		dispatch(clearSelectedTicket())
 	}
 
@@ -41,6 +45,8 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 		setSummary(ticket?.summary)
 		setDescription(ticket?.description)
 		setStatus(ticket?.status)
+		console.log(ticket?.priority)
+		setPriority(Object.values(TicketPriority).indexOf(ticket?.priority))
 	}, [active])
 
 	return (
@@ -58,6 +64,12 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 						<label className="label has-text-white">Ticket Status</label>
 						<div className="control">
 							<TicketStatusDropdown onClick={(status: TicketStatus) => setStatus(status)} currentStatus={status}/>
+					 	</div>
+					</div>
+					<div className="field">
+						<label className="label has-text-white">Priority</label>
+						<div className="control">
+							<DropdownMenu currentValue={priority} values={priorityStates} onClickValue={(index) => setPriority(index)}/>
 					 	</div>
 					</div>
 					<div className="field">

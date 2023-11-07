@@ -1,10 +1,12 @@
 
 import { useState } from "react";
 import { addTicket } from "../state/actions";
-import { TicketStatus } from "../types/ticket";
-import { useDispatch } from "react-redux";
+import { TicketPriority, TicketStatus } from "../types/ticket";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import Ticket from "../types/ticket";
+import DropdownMenu from "./DropdownMenu";
+import type { RootState } from '../state/store'
 
 interface CreateTicketModalProps {
 	active: boolean,
@@ -15,16 +17,32 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 
 	const [summary, setSummary] = useState("")	
 	const [description, setDescription] = useState("")
+	const priorityStates = Object.values(TicketPriority)
+	const [priority, setPriority] = useState(0)
 	const dispatch = useDispatch()
+	const tickets = useSelector((state: RootState) => state.tickets)
+	const ticketsCount = Object.keys(tickets).length
 
 	const createTicket = () => {
+<<<<<<< HEAD
 		const ticket: Ticket = { summary, description, status: TicketStatus.BLOCKED, id: uuidv4(), created: Date.now() };
+=======
+		const ticket: Ticket = { 
+			summary, 
+			description, 
+			status: TicketStatus.BLOCKED, 
+			id: uuidv4(), 
+			priority: priorityStates[priority] as TicketPriority,
+			number: ticketsCount + 1
+		};
+>>>>>>> master
 		dispatch(addTicket(ticket))
 	}
 
 	const clearState = () => {
 		setSummary("")
 		setDescription("")
+		setPriority(0)
 	}
 
 	return (
@@ -40,6 +58,12 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
   						<label className="label has-text-white">Summary</label>
 						<div className="control">
 							<input className="input has-background-1D1D1D has-border-dark has-text-white" value={summary} type="text" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSummary(e.target.value)}/>
+						</div>
+					</div>
+					<div className="field">
+  						<label className="label has-text-white">Priority</label>
+						<div className="control">
+							<DropdownMenu currentValue={priority} values={priorityStates} onClickValue={(index: number) => setPriority(index)}/>
 						</div>
 					</div>
 					<div className="field">
