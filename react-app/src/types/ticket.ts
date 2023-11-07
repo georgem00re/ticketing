@@ -10,10 +10,10 @@ export default interface Ticket {
 }
 
 export enum TicketStatus {
-	BLOCKED = "BLOCKED",
-	TODO = "TODO",
-	IN_PROGRESS = "IN PROGRESS",
-	DONE = "DONE"
+	BLOCKED = "Blocked",
+	TODO = "Todo",
+	IN_PROGRESS = "In progress",
+	DONE = "Done"
 }
 
 export enum TicketPriority {
