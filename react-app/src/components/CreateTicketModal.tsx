@@ -24,18 +24,15 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 	const ticketsCount = Object.keys(tickets).length
 
 	const createTicket = () => {
-<<<<<<< HEAD
-		const ticket: Ticket = { summary, description, status: TicketStatus.BLOCKED, id: uuidv4(), created: Date.now() };
-=======
 		const ticket: Ticket = { 
 			summary, 
 			description, 
 			status: TicketStatus.BLOCKED, 
 			id: uuidv4(), 
 			priority: priorityStates[priority] as TicketPriority,
-			number: ticketsCount + 1
+			number: ticketsCount + 1,
+			created: Date.now(),
 		};
->>>>>>> master
 		dispatch(addTicket(ticket))
 	}
 
