@@ -30,7 +30,8 @@ export default function CreateTicketModal({ active, onClose }: CreateTicketModal
 			status: TicketStatus.BLOCKED, 
 			id: uuidv4(), 
 			priority: priorityStates[priority] as TicketPriority,
-			number: ticketsCount + 1
+			number: ticketsCount + 1,
+			created: Date.now(),
 		};
 		dispatch(addTicket(ticket))
 	}
