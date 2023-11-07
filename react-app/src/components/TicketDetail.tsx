@@ -4,7 +4,6 @@ import { clearSelectedTicket, updateTicket } from "../state/actions";
 import { useState, useEffect } from "react";
 import type { RootState } from '../state/store'
 import Ticket, { TicketPriority, TicketStatus } from "../types/ticket";
-import TicketStatusDropdown from "./TicketStatusDropdown";
 import DropdownMenu from "./DropdownMenu";
 
 interface TicketDetailProps {
