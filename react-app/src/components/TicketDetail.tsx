@@ -18,11 +18,12 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	const selectedTicket = useSelector((state: RootState) => state.selectedTicket);
 	const ticket = ticketsObject[selectedTicket] as Ticket;
 	const [priority, setPriority] = useState(Object.values(TicketPriority).indexOf(ticket?.priority))
+	const statusStates = Object.values(TicketStatus)
 	
 	const priorityStates = Object.values(TicketPriority)
 	const [summary, setSummary] = useState(ticket?.summary)
 	const [description, setDescription] = useState(ticket?.description)
-	const [status, setStatus] = useState(ticket?.status);
+	const [status, setStatus] = useState(Object.values(TicketStatus).indexOf(ticket?.status));
 
 	const cancel = () => {
 		dispatch(clearSelectedTicket())
@@ -32,7 +33,7 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 		dispatch(updateTicket({ 
 			summary, 
 			description, 
-			status, 
+			status: statusStates[status] as TicketStatus, 
 			id: selectedTicket, 
 			priority: priorityStates[priority] as TicketPriority, 
 			number: ticket.number, 
@@ -52,7 +53,7 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	useEffect(() => {
 		setSummary(ticket?.summary)
 		setDescription(ticket?.description)
-		setStatus(ticket?.status)
+		setStatus(Object.values(TicketStatus).indexOf(ticket?.status))
 		console.log(ticket?.priority)
 		setPriority(Object.values(TicketPriority).indexOf(ticket?.priority))
 	}, [active])
@@ -71,7 +72,7 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 					<div className="field">
 						<label className="label has-text-white">Ticket Status</label>
 						<div className="control">
-							<TicketStatusDropdown onClick={(status: TicketStatus) => setStatus(status)} currentStatus={status}/>
+							<DropdownMenu currentValue={status} values={statusStates} onClickValue={(index) => setStatus(index)}/>
 					 	</div>
 					</div>
 					<div className="field">
