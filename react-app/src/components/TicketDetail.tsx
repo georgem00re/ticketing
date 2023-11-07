@@ -29,7 +29,15 @@ export default function TicketDetail({ active }: TicketDetailProps) {
 	}
 
 	const save = () => {
-		dispatch(updateTicket({ summary, description, status, id: selectedTicket, priority: priorityStates[priority] as TicketPriority, number: ticket.number }))
+		dispatch(updateTicket({ 
+			summary, 
+			description, 
+			status, 
+			id: selectedTicket, 
+			priority: priorityStates[priority] as TicketPriority, 
+			number: ticket.number, 
+			created: ticket.created
+		}))
 		dispatch(clearSelectedTicket())
 	}
 
